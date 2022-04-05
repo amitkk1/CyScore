@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import HomePage from './pages/Home/HomePage';
 import LoginPage from './pages/Login/LoginPage'
 
 
@@ -15,6 +16,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='login' element={<LoginPage />}></Route>
+          <Route path='/' element={<HomePage />}></Route>
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>

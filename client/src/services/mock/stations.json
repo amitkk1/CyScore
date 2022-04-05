@@ -1,0 +1,26 @@
+[
+    {
+        "ip": "1.21.223.86",
+        "id": "cZZIrRs96W",
+        "alertsCount": 4,
+        "score": 60
+    },
+    {
+        "ip": "156.251.8.205",
+        "id": "axz5zBVouq",
+        "alertsCount": 3,
+        "score": 75
+    },
+    {
+        "ip": "236.43.150.227",
+        "id": "GjLB4HJJVG",
+        "alertsCount": 5,
+        "score": 50
+    },
+    {
+        "ip": "26.39.234.213",
+        "id": "28XCgWOyEw",
+        "alertsCount": 2,
+        "score": 90
+    }
+]

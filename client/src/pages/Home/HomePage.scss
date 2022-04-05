@@ -1,0 +1,10 @@
+@import "../../assets/css/colors.scss";
+.homepage{
+    width: 100%;
+    min-height: 100vh;
+    background-color: $color-primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
