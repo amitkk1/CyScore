@@ -10,6 +10,8 @@ const LoginPage = () => {
 
   //used for loading while waiting for the server login request
   const [isLoading, setIsLoading] = useState(false);
+  const [usernameFieldEror, setUsernameFieldError] = useState("");
+  const [passwordFieldError, setPasswordFieldError] = useState("");
   const { setIsLoggedIn } = useContext(AppContext)
 
   //used for page navigation
@@ -23,15 +25,13 @@ const LoginPage = () => {
 
     //validating username
     let usernameValidationMessage = validateUsername(username);
-    if (usernameValidationMessage !== null) {
-      alert(usernameValidationMessage);
-      return;
-    }
+    setUsernameFieldError(usernameValidationMessage);
 
     //validating password
     let passwordValidationMessage = validatePassword(password);
-    if (passwordValidationMessage !== null) {
-      alert(passwordValidationMessage);
+    setPasswordFieldError(passwordValidationMessage);
+
+    if(passwordFieldError || usernameFieldEror){
       return;
     }
 
@@ -71,6 +71,8 @@ const LoginPage = () => {
             name='username'
             autoFocus
             autoComplete='username'
+            error={!!usernameFieldEror}
+            helperText={usernameFieldEror}
           />
           <TextField
             required
@@ -80,10 +82,8 @@ const LoginPage = () => {
             margin='normal'
             name='password'
             autoComplete='password'
-          />
-          <FormControlLabel 
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            error={!!passwordFieldError}
+            helperText={passwordFieldError}
           />
           <Button
             type="submit"
