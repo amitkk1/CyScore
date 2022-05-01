@@ -1,11 +1,11 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "./LoginPage.scss";
 import { validatePassword, validateUsername } from "../../services/validationService";
 import { login } from "../../services/sessionsService";
 import { AppContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import { Button, Checkbox, Container, FormControlLabel, TextField, Typography } from '@mui/material';
+import { Button, Container, TextField, Typography } from '@mui/material';
 const LoginPage = () => {
 
   //used for loading while waiting for the server login request
