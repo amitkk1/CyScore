@@ -4,21 +4,22 @@ import { validatePassword, validateUsername } from "../../services/validationSer
 import { login } from "../../services/sessionsService";
 import { AppContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import { Button, Checkbox, Container, FormControlLabel, TextField, Typography } from '@mui/material';
 const LoginPage = () => {
 
   //used for loading while waiting for the server login request
   const [isLoading, setIsLoading] = useState(false);
   const { setIsLoggedIn } = useContext(AppContext)
-  //username and password fields
-  const usernameRef = useRef();
-  const passwordRef = useRef();
 
   //used for page navigation
   const navigate = useNavigate();
 
-  const onLoginButtonClick = async () => {
-    let username = usernameRef.current.value;
-    let password = passwordRef.current.value;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    let username = data.get('username');
+    let password = data.get('password');
 
     //validating username
     let usernameValidationMessage = validateUsername(username);
@@ -34,36 +35,68 @@ const LoginPage = () => {
       return;
     }
 
-    //both username and password are in the correct format, trying to send the login request to the server
-    //TODO: replace console.log callback with setToken function
     setIsLoading(true);
-    let loginSuccessful = await login(username, password);
-    setIsLoading(false);
+    login(username, password).then(loginSuccess => {
+      setIsLoading(false);
 
-    if (loginSuccessful) {
-      alert("Login successful!");
-      setIsLoggedIn(true);
-      navigate("/");
-    } else {
-      alert("Wrong username or password");
-    }
+      if (loginSuccess) {
+        alert("Login successful!");
+        setIsLoggedIn(true);
+        navigate("/");
+      } else {
+        alert("Wrong username or password");
+      }
+    })
   }
 
   return (
-    <main className='login-page'>
-      <div className='login-form'>
-        {/* Username */}
-        <label htmlFor='username'>Username</label>
-        <input type="text" placeholder='Username' id='username' ref={usernameRef} />
-
-        {/* Password */}
-        <label htmlFor='password'>Password</label>
-        <input type="password" placeholder='Password' id='password' ref={passwordRef} />
-
-        {/* Login button */}
-        <button onClick={async () => onLoginButtonClick()}>{isLoading ? "Loading.." : "Login"}</button>
-      </div>
-    </main>
+    <Container component='main' maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}>
+        <Typography component="h1" variant='h5'>
+          Sign in
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          <TextField
+            required
+            fullWidth
+            id='username'
+            label='Username'
+            margin='normal'
+            name='username'
+            autoFocus
+            autoComplete='username'
+          />
+          <TextField
+            required
+            fullWidth
+            id='password'
+            label='Password'
+            margin='normal'
+            name='password'
+            autoComplete='password'
+          />
+          <FormControlLabel 
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant='contained'
+            sx={{mt: 3, mb: 2}}
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : "Sign In"}
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   )
 }
 
