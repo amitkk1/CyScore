@@ -43,7 +43,7 @@ const LoginPage = () => {
     if (loginSuccessful) {
       alert("Login successful!");
       setIsLoggedIn(true);
-      navigate("/computers");
+      navigate("/");
     } else {
       alert("Wrong username or password");
     }
