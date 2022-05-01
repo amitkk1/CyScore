@@ -1,25 +1,30 @@
 import React from 'react';
-import "./StationsTable.scss";
-const StationsTable = ({stations}) => {
+import { DataGrid } from '@mui/x-data-grid';
+import { Container } from '@mui/material';
+
+const StationsTable = ({ stations }) => {
+
+  const columns = [
+    { field: 'id', headerName: 'ID', flex: 1, headerAlign: 'center', align: 'center' },
+    { field: 'ip', headerName: 'IP Address', flex: 1, headerAlign: 'center', align: 'center', sortable: false },
+    { field: 'alertsCount', headerName: 'Number of Alerts', type: 'number', flex: 1, headerAlign: 'center', align: 'center' },
+    { field: 'score', headerName: 'Score', type: 'number', flex: 1, headerAlign: 'center', align: 'center' },
+  ]
+
+
   return (
-    <section className='stations-table'>
-      <div className='row'>
-        <div className='col'>IP Address</div>
-        <div className='col'>Station Id</div>
-        <div className='col'>Alerts</div>
-        <div className='col'>Score</div>
-      </div>
-      {stations.map(station => {
-        return(
-          <div className='row'>
-          <div className='col'>{station.ip}</div>
-          <div className='col'>{station.id}</div>
-          <div className='col'>{station.alertsCount}</div>
-          <div className='col'>{station.score}</div>
-        </div>
-        )
-      })}
-    </section>
+    <Container sx={{
+      minHeight: 500
+    }}>
+      <DataGrid
+        autoHeight
+        rows={stations}
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+
+      />
+    </Container>
   )
 }
 

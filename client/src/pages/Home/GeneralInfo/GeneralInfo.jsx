@@ -1,41 +1,77 @@
+import { Box, Container, Grid, Paper, styled, Typography } from '@mui/material'
 import React from 'react'
-import "./GeneralInfo.scss"
-const GeneralInfo = ({totalStations, totalOkStations, totalFaultyStations, totalStationsNotCommunicating, totalActiveStations, networkScore}) => {
-  return (
-    <section className='general-info'>
-        <h1>CyScore</h1>
 
-        <div className='info-box'>
-            <h2>Total stations</h2>
-            <h3>{totalStations}</h3>
-        </div>
 
-        <div className='info-box'>
-            <h2>Total ok stations</h2>
-            <h3>{totalOkStations}/{totalStations}</h3>
-        </div>
 
-        <div className='info-box'>
-            <h2>Total faulty stations</h2>
-            <h3>{totalFaultyStations}/{totalStations}</h3>
-        </div>
+const InfoBox = ({ title, content }) => {
 
-        <div className='info-box'>
-            <h2>Total stations not communicating</h2>
-            <h3>{totalStationsNotCommunicating}/{totalStations}</h3>
-        </div>
+    const InfoBoxContainer = styled(Paper)(({ theme }) => ({
+        backgroundColor: '#fff',
+        ...theme.typography.body2,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+        minHeight: '90px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+    }));
+    return (
+        <InfoBoxContainer>
+            <Typography component="h2" variant='h6' fontSize={18}>
+                {title}
+            </Typography>
+            <Typography component="h3" variant='h6' fontSize={16}>
+                {content}
+            </Typography>
+        </InfoBoxContainer>
+    )
+}
 
-        <div className='info-box'>
-            <h2>Total active stations</h2>
-            <h3>{totalActiveStations}/{totalStations}</h3>
-        </div>
+const GeneralInfo = (
+    { totalStations,
+        totalOkStations,
+        totalFaultyStations,
+        totalStationsNotCommunicating,
+        totalActiveStations,
+        networkScore }) => {
 
-        <div className='info-box'>
-            <h2>Network score</h2>
-            <h3>{networkScore}/100</h3>
-        </div>
-    </section>
-  )
+    const infoBoxes = [
+        { title: 'Total stations', content: totalStations },
+        { title: 'Total ok stations', content: `${totalOkStations}/${totalStations}` },
+        { title: 'Total faulty stations', content: `${totalFaultyStations}/${totalStations}` },
+        { title: 'Total stations not communicating', content: `${totalStationsNotCommunicating}/${totalStations}` },
+        { title: 'Total active stations', content: `${totalActiveStations}/${totalStations}` },
+        { title: 'Network score', content: `${networkScore}/100` },
+    ];
+    return (
+        <Container component="section">
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    backgroundColor: '#fff',
+                    minWidth: "100%",
+                    marginBottom: 5,
+                    marginTop: 3
+                }}
+            >
+                <Grid container spacing={2}>
+                    {
+                        infoBoxes.map(box => {
+                            return (
+                                <Grid item xs={4}>
+                                    <InfoBox title={box.title} content={box.content} key={box.title} />
+                                </Grid>
+                            );
+                        })
+                    }
+                </Grid>
+            </Box>
+        </Container>
+    )
 }
 
 export default GeneralInfo
