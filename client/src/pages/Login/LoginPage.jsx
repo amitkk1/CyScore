@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import "./LoginPage.scss";
 import { validatePassword, validateUsername } from "../../services/validationService";
 import { login } from "../../services/sessionsService";
 import { AppContext } from '../../App';
