@@ -2,7 +2,6 @@ import { Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { getStations } from '../../services/stationsService';
 import GeneralInfo from './GeneralInfo/GeneralInfo';
-import "./HomePage.scss";
 import StationsTable from './StationsTable/StationsTable';
 const HomePage = () => {
 
@@ -14,6 +13,7 @@ const HomePage = () => {
       const data = await getStations();
       setStations(data);
     }
+
     fetchData();
   })
   return (
@@ -35,7 +35,7 @@ const HomePage = () => {
         networkScore={75}
       />
 
-      <StationsTable stations={stations} />
+      <StationsTable stations={stations}/>
     </Container>
   )
 }

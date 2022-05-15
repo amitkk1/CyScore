@@ -3,24 +3,32 @@
         "ip": "1.21.223.86",
         "id": "cZZIrRs96W",
         "alertsCount": 4,
-        "score": 60
+        "score": 60,
+        "mac": "DF-8A-5F-1C-6E-7F",
+        "hostname": "Amit's computer"
     },
     {
         "ip": "156.251.8.205",
         "id": "axz5zBVouq",
         "alertsCount": 3,
-        "score": 75
+        "score": 75,
+        "mac": "33-51-75-65-EA-8F",
+        "hostname": "Almog's computer"
     },
     {
         "ip": "236.43.150.227",
         "id": "GjLB4HJJVG",
         "alertsCount": 5,
-        "score": 50
+        "score": 50,
+        "mac": "40-18-EA-D8-03-3C",
+        "hostname": "Yaniv's computer"
     },
     {
         "ip": "26.39.234.213",
         "id": "28XCgWOyEw",
         "alertsCount": 2,
-        "score": 90
+        "score": 90,
+        "mac": "5F-22-6B-B1-5A-42",
+        "hostname": "Nezer's computer"
     }
 ]

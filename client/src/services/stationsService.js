@@ -5,3 +5,10 @@ export const getStations = async () => {
 
     return stations;
 }
+
+export const getStation = async (id) => {
+    await new Promise(t => setTimeout(t, 1000));
+
+    const station = stations.find(s => s.id === id);
+    return station;
+}
