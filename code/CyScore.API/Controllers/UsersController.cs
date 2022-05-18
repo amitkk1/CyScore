@@ -20,7 +20,7 @@ namespace CyScore.API.Controllers
             this.userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
-        [HttpPost("/signup")]
+        [HttpPost("signup")]
         [AllowAnonymous]
         public async Task<IActionResult> SignUpAsync([FromBody]UserView user)
         {
@@ -28,7 +28,7 @@ namespace CyScore.API.Controllers
             return new OkResult();
         }
 
-        [HttpPost("/login")]
+        [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody]UserView user)
         {
@@ -39,6 +39,13 @@ namespace CyScore.API.Controllers
             }
             string token = userService.GenerateJsonWebToken(user);
             return Ok(token);
+        }
+
+        [HttpGet("verify")]
+        [Authorize]
+        public IEnumerable<string> Verify()
+        {
+            return new string[] { "value1", "value2" };
         }
 
     }

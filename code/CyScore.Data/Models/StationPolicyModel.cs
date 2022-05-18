@@ -14,6 +14,5 @@ namespace CyScore.Data.Models
         public virtual PolicyModel Policy { get; set; }
         public virtual StationModel Station { get; set; }
         public string Status { get; set; }
-        public DateTime LastUpdated { get; set; }
     }
 }

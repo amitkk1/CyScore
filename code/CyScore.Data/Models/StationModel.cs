@@ -12,6 +12,8 @@ namespace CyScore.Data.Models
         public string Ip { get; set; }
         public string Mac { get; set; }
         public string Hostname { get; set; }
+        public string StationKey { get; set; }
+        public DateTime LastUpdated { get; set; }
         public virtual StationPolicyModel[] Policies { get; set; }
     }
 }
