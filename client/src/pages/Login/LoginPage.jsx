@@ -5,6 +5,7 @@ import { AppContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import { Button, Container, TextField, Typography } from '@mui/material';
+import { palette } from '@mui/system';
 const LoginPage = () => {
 
   //used for loading while waiting for the server login request
@@ -55,9 +56,9 @@ const LoginPage = () => {
           marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center'
+          alignItems: 'center',
         }}>
-        <Typography component="h1" variant='h5'>
+        <Typography sx={{fontWeight: 800}} component="h1" variant='h3' color="#1565c0">
           Sign in
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>

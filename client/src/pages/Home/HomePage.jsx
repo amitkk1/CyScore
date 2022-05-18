@@ -21,7 +21,7 @@ const HomePage = () => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
       }}>
       <Typography component="h1" variant='h1'>
         CyScore
@@ -35,7 +35,7 @@ const HomePage = () => {
         networkScore={75}
       />
 
-      <StationsTable stations={stations}/>
+      <StationsTable stations={stations} />
     </Container>
   )
 }

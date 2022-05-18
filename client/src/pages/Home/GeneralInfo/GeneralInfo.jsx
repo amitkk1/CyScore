@@ -6,7 +6,7 @@ import React from 'react'
 const InfoBox = ({ title, content }) => {
 
     const InfoBoxContainer = styled(Paper)(({ theme }) => ({
-        backgroundColor: '#fff',
+        backgroundColor: '#b2ebf2',
         ...theme.typography.body2,
         padding: theme.spacing(1),
         textAlign: 'center',

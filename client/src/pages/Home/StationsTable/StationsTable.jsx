@@ -22,10 +22,10 @@ const StationsTable = ({ stations }) => {
 
 
   return (
-    <Container sx={{
-      minHeight: 500
+    <Container sx={{ //CSS object
+      minHeight: 500,
     }}>
-      <DataGrid
+      <DataGrid //Table object
         autoHeight
         rows={stations}
         columns={columns}
@@ -33,7 +33,9 @@ const StationsTable = ({ stations }) => {
         rowsPerPageOptions={[10]}
         onRowClick={handleStationClick}
         disableSelectionOnClick
-
+        sx={{
+          bgcolor: "#80deea"
+        }}
       />
     </Container>
   )
