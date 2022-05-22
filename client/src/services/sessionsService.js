@@ -1,13 +1,26 @@
-export const login = async (username, password) => {
-    //made to act like a server, waits a second and then replies
-    await new Promise(t => setTimeout(t, 1000));
+import { API_ADDRESS } from "../config";
 
-    //simulates a login, future logic should be on the server
-    if(username === "admin" && password === "password"){
-        //TODO: retrieve JWT from server
-        return true;
-    } else {
-        return false;
-    }
+export const getAuthHeader = () => {
+    return "Bearer " + localStorage.getItem('jwt');
 }
+
+export const login = async (username, password) => {
+    const response = await fetch(`${API_ADDRESS}/users/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, password})
+    });
+
+    if(response.status == 200)
+    {
+        const token = await response.text();
+        localStorage.setItem('jwt', token);
+        return true;
+    }
+    return false;
+}
+
+
 

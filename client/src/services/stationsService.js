@@ -1,14 +1,32 @@
 import stations from "./mock/stations.json";
+import { API_ADDRESS } from "../config";
+import {getAuthHeader} from "./sessionsService";
 export const getStations = async () => {
-    //made to act like a server, waits a second and then replies
-    await new Promise(t => setTimeout(t, 1000));
+    const response = await fetch(`${API_ADDRESS}/stations`, {
+        headers: {
+            Authorization: getAuthHeader()
+        }
+    }).then(res => res.json());
 
-    return stations;
+    return response;
 }
 
 export const getStation = async (id) => {
-    await new Promise(t => setTimeout(t, 1000));
+    const response = await fetch(`${API_ADDRESS}/stations/${id}`, {
+        headers: {
+            Authorization: getAuthHeader()
+        }
+    }).then(res => res.json());
 
-    const station = stations.find(s => s.id === id);
-    return station;
+    return response;
+}
+
+export const getGeneralInfo = async () => {
+    const response = await fetch(`${API_ADDRESS}/info`, {
+        headers: {
+            Authorization: getAuthHeader()
+        }
+    }).then(res => res.json());
+
+    return response;
 }

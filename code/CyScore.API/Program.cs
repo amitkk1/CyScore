@@ -25,7 +25,17 @@ namespace CyScore.API
 
             //api services
             builder.Services.AddScoped<IUserService, UserService>();
-
+            builder.Services.AddScoped<IAgentService, AgentService>();
+            builder.Services.AddScoped<IStationService, StationService>();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "*",
+                    policy =>
+                    {
+                        policy.WithOrigins("*");
+                        policy.WithHeaders("*");
+                    });
+            });
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -48,7 +58,7 @@ namespace CyScore.API
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseCors("*");
             app.MapControllers();
 
             app.Run();

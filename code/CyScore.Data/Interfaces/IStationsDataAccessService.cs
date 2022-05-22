@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CyScore.Data.Models;
+using CyScore.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,5 +36,8 @@ namespace CyScore.Data.Interfaces
         public Task UpdateStationPolicy(string stationKey, string policyName, string status);
 
         public Task InsertStationPolicy(string stationKey, string policyName, string status);
+
+        public IEnumerable<StationBasicDetailsView> GetAllStations();
+        public StationView GetStation(int id);
     }
 }

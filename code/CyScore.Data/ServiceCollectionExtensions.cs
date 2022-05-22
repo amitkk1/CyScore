@@ -14,6 +14,7 @@ namespace CyScore.Data
         public static void AddCyscoreDataServices(this IServiceCollection services)
         {
             services.AddScoped<IUserDataAccessService, UserDataAccessService>();
+            services.AddScoped<IStationsDataAccessService, StationsDataAccessService>();
         }
     }
 }

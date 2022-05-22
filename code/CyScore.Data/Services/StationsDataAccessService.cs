@@ -1,5 +1,7 @@
-﻿using CyScore.Data.Interfaces;
+﻿using CyScore.Constants;
+using CyScore.Data.Interfaces;
 using CyScore.Data.Models;
+using CyScore.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -149,6 +151,58 @@ namespace CyScore.Data.Services
             stationPolicy.Status = status;
             await context.SaveChangesAsync();
 
+        }
+
+        public IEnumerable<StationBasicDetailsView> GetAllStations()
+        {
+            var stations = context.Stations.ToList();
+            var stationsPolicies = context.StationsPolicies.ToList();
+            var result = stations.GroupJoin(
+                    stationsPolicies,
+                    station => station.Id,
+                    stationPolicy => stationPolicy.StationId,
+                    (station, stationPolicies) => new StationBasicDetailsView
+                    {
+                        Id = station.Id,
+                        Hostname = station.Hostname,
+                        Ip = station.Ip,
+                        Mac = station.Mac,
+                        LastUpdated = station.LastUpdated,
+                        AlertsCount = stationPolicies.Count(policy => policy.Status != StationPolicyStatus.OK),
+                        Score = (stationPolicies.Count(policy => policy.Status != StationPolicyStatus.OK) * 100 / stationPolicies.Count())
+                    }
+                ).ToList();
+            return result;
+        }
+
+        public StationView GetStation(int id)
+        {
+            var station = context.Stations.Where(a => a.Id == id).FirstOrDefault();
+            if (station is null)
+            {
+                throw new ArgumentException("Station does not exist");
+            }
+            var stationsPolicies = context.StationsPolicies.Where(a => a.StationId == id);
+            var policies = context.Policies.Where(a => stationsPolicies.Any(b => b.PolicyId == a.Id));
+            return new StationView
+            {
+                Id = id,
+                AlertsCount = stationsPolicies.Count(a => a.Status != StationPolicyStatus.OK),
+                Hostname = station.Hostname,
+                Ip = station.Ip,
+                Mac = station.Mac,
+                LastUpdated  = station.LastUpdated,
+                Policies = policies.Select(a => new StationPolicyView
+                {
+                    Description = a.Description,
+                    Id = a.Id,
+                    Name = a.Name,
+                    Status = stationsPolicies.First(b => b.StationId == id && b.PolicyId == a.Id).Status
+                }).ToArray(),
+                Score = (stationsPolicies.Count(a => a.Status != StationPolicyStatus.OK) * 100) / stationsPolicies.Count()
+            };
+
+            
         }
     }
 }

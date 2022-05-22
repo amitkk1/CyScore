@@ -18,15 +18,6 @@ namespace CyScore.Data
         public CyScoreContext(DbContextOptions<CyScoreContext> options)
             : base(options)
         {
-
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //seeding policies
-            modelBuilder.Entity<PolicyModel>().HasData(
-                new PolicyModel { Id = 10, Description = "TEST DESC", Name = "TEST NAME" }
-                );
             
         }
     }

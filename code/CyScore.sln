@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyScore.API", "CyScore.API\CyScore.API.csproj", "{60BA8576-9DB0-488B-AC52-9FB3729DA7C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyScore.API", "CyScore.API\CyScore.API.csproj", "{60BA8576-9DB0-488B-AC52-9FB3729DA7C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyScore.Data", "CyScore.Data\CyScore.Data.csproj", "{E981B600-7700-487E-A96F-220322EF5FD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyScore.Data", "CyScore.Data\CyScore.Data.csproj", "{E981B600-7700-487E-A96F-220322EF5FD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyScore.Views", "CyScore.Views\CyScore.Views.csproj", "{F6E582C9-CB1B-4209-B093-85786C8E3DFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyScore.Views", "CyScore.Views\CyScore.Views.csproj", "{F6E582C9-CB1B-4209-B093-85786C8E3DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyScore.Constants", "CyScore.Constants\CyScore.Constants.csproj", "{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{F6E582C9-CB1B-4209-B093-85786C8E3DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6E582C9-CB1B-4209-B093-85786C8E3DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6E582C9-CB1B-4209-B093-85786C8E3DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
