@@ -20,6 +20,9 @@ const StationPolicies = ({ policies }) => {
                 pageSize={10}
                 rowsPerPageOptions={[10]}
                 disableSelectionOnClick
+                sx={{
+                    bgcolor: "#80deea"
+                  }}
             />
         </Container>
     )

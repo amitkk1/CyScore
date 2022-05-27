@@ -14,7 +14,7 @@ const StationDetails = ({station}) => {
   ]
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer sx={{bgcolor: "#b388ff"}} component={Paper}>
       <Table>
         <TableBody>
           {details.map((row) => (
