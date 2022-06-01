@@ -31,7 +31,7 @@ const LoginPage = () => {
     let passwordValidationMessage = validatePassword(password);
     setPasswordFieldError(passwordValidationMessage);
 
-    if(passwordFieldError || usernameFieldEror){
+    if (passwordFieldError || usernameFieldEror) {
       return;
     }
 
@@ -58,7 +58,7 @@ const LoginPage = () => {
           flexDirection: 'column',
           alignItems: 'center',
         }}>
-        <Typography sx={{fontWeight: 800}} component="h1" variant='h3' color="#1565c0">
+        <Typography sx={{ fontWeight: 800 }} component="h1" variant='h3' color="#1565c0">
           Sign in
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
@@ -75,6 +75,7 @@ const LoginPage = () => {
             helperText={usernameFieldEror}
           />
           <TextField
+            type={'password'}
             required
             fullWidth
             id='password'
@@ -89,7 +90,7 @@ const LoginPage = () => {
             type="submit"
             fullWidth
             variant='contained'
-            sx={{mt: 3, mb: 2}}
+            sx={{ mt: 3, mb: 2 }}
             disabled={isLoading}
           >
             {isLoading ? "Loading..." : "Sign In"}

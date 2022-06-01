@@ -38,11 +38,11 @@ const GeneralInfo = (
         networkScore }) => {
 
     const infoBoxes = [
-        { title: 'Total stations', content: totalStations },
-        { title: 'Total ok stations', content: `${totalOkStations}/${totalStations}` },
-        { title: 'Total faulty stations', content: `${totalFaultyStations}/${totalStations}` },
-        { title: 'Total stations not communicating', content: `${totalStationsNotCommunicating}/${totalStations}` },
-        { title: 'Total active stations', content: `${totalActiveStations}/${totalStations}` },
+        { title: 'Stations', content: totalStations },
+        { title: 'Ok stations', content: `${totalOkStations}/${totalStations}` },
+        { title: 'Faulty stations', content: `${totalFaultyStations}/${totalStations}` },
+        { title: 'Stations not communicating', content: `${totalStationsNotCommunicating}/${totalStations}` },
+        { title: 'Active stations', content: `${totalActiveStations}/${totalStations}` },
         { title: 'Network score', content: `${networkScore}/100` },
     ];
     return (
