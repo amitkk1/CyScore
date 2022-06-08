@@ -27,7 +27,7 @@ namespace CyScore.Agent
                     var virusCheckerName = virusChecker["displayName"];
                     if (virusCheckerName.Equals("Windows Defender"))
                     {
-                        if (virusChecker["productState"] == "397568") //checks if windows defender is active
+                        if ((UInt32)virusChecker["productState"] == 397568) //checks if windows defender is active
                         {
                             return true;
                         }
