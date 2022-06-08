@@ -169,7 +169,7 @@ namespace CyScore.Data.Services
                         Mac = station.Mac,
                         LastUpdated = station.LastUpdated,
                         AlertsCount = stationPolicies.Count(policy => policy.Status != StationPolicyStatus.OK),
-                        Score = (stationPolicies.Count(policy => policy.Status != StationPolicyStatus.OK) * 100 / stationPolicies.Count())
+                        Score =  stationPolicies.Count(policy => policy.Status == StationPolicyStatus.OK) * 100 / stationPolicies.Count()
                     }
                 ).ToList();
             return result;
@@ -199,7 +199,7 @@ namespace CyScore.Data.Services
                     Name = a.Name,
                     Status = stationsPolicies.First(b => b.StationId == id && b.PolicyId == a.Id).Status
                 }).ToArray(),
-                Score = (stationsPolicies.Count(a => a.Status != StationPolicyStatus.OK) * 100) / stationsPolicies.Count()
+                Score = (stationsPolicies.Count(a => a.Status == StationPolicyStatus.OK) * 100) / stationsPolicies.Count()
             };
 
             
