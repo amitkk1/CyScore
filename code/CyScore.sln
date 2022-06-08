@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyScore.Data", "CyScore.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyScore.Views", "CyScore.Views\CyScore.Views.csproj", "{F6E582C9-CB1B-4209-B093-85786C8E3DFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyScore.Constants", "CyScore.Constants\CyScore.Constants.csproj", "{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyScore.Constants", "CyScore.Constants\CyScore.Constants.csproj", "{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyScore.Agent", "CyScore.Agent\CyScore.Agent.csproj", "{6AB4C387-1951-40C0-98F7-B8059F4FD688}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1570ABA-2CDA-4AD7-9DD9-9A1876CFDF51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB4C387-1951-40C0-98F7-B8059F4FD688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB4C387-1951-40C0-98F7-B8059F4FD688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB4C387-1951-40C0-98F7-B8059F4FD688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB4C387-1951-40C0-98F7-B8059F4FD688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
