@@ -40,7 +40,7 @@ namespace CyScore.Data.Services
                 Ip = ip,
                 Mac = mac,
                 LastUpdated = DateTime.Now,
-                Policies = Array.Empty<StationPolicyModel>()
+                Policies = new List<StationPolicyModel>()
             };
 
             await context.Stations.AddAsync(station);
@@ -106,11 +106,20 @@ namespace CyScore.Data.Services
             {
                 PolicyId = policyId,
                 StationId = stationId,
-                Status = status
+                Status = status,
+                LastChanged = DateTime.Now,
+                Policy = policy,
+                Station = station
             };
-
-            await context.StationsPolicies.AddAsync(stationPolicy);
-            await context.SaveChangesAsync();
+            try
+            {
+                station.Policies.Add(stationPolicy);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public bool StationKeyExists(string key)
@@ -147,8 +156,12 @@ namespace CyScore.Data.Services
             if (stationPolicy == null)
                 throw new ArgumentException("Station policy not found");
 
+            var lastChanged = stationPolicy.Status == status ? stationPolicy.LastChanged : DateTime.Now;
+
             station.LastUpdated = DateTime.Now;
             stationPolicy.Status = status;
+            stationPolicy.LastChanged = lastChanged;
+
             await context.SaveChangesAsync();
 
         }
@@ -169,7 +182,7 @@ namespace CyScore.Data.Services
                         Mac = station.Mac,
                         LastUpdated = station.LastUpdated,
                         AlertsCount = stationPolicies.Count(policy => policy.Status != StationPolicyStatus.OK),
-                        Score =  stationPolicies.Count(policy => policy.Status == StationPolicyStatus.OK) * 100 / stationPolicies.Count()
+                        Score = stationPolicies.Count(policy => policy.Status == StationPolicyStatus.OK) * 100 / stationPolicies.Count()
                     }
                 ).ToList();
             return result;
@@ -191,18 +204,20 @@ namespace CyScore.Data.Services
                 Hostname = station.Hostname,
                 Ip = station.Ip,
                 Mac = station.Mac,
-                LastUpdated  = station.LastUpdated,
-                Policies = policies.Select(a => new StationPolicyView
+                LastUpdated = station.LastUpdated,
+                Policies = policies.Select(stationPolicy => new StationPolicyView
                 {
-                    Description = a.Description,
-                    Id = a.Id,
-                    Name = a.Name,
-                    Status = stationsPolicies.First(b => b.StationId == id && b.PolicyId == a.Id).Status
+                    Description = stationPolicy.Description,
+                    Id = stationPolicy.Id,
+                    Name = stationPolicy.Name,
+                    Status = stationsPolicies.First(b => b.StationId == id && b.PolicyId == stationPolicy.Id).Status,
+                    LastChanged = stationsPolicies.First(b => b.StationId == id && b.PolicyId == stationPolicy.Id).LastChanged
+                        .ToString("dd/MM/yyyy HH:mm")
                 }).ToArray(),
                 Score = (stationsPolicies.Count(a => a.Status == StationPolicyStatus.OK) * 100) / stationsPolicies.Count()
             };
 
-            
+
         }
     }
 }

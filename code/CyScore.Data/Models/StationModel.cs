@@ -14,6 +14,6 @@ namespace CyScore.Data.Models
         public string Hostname { get; set; }
         public string StationKey { get; set; }
         public DateTime LastUpdated { get; set; }
-        public virtual IEnumerable<StationPolicyModel> Policies { get; set; }
+        public virtual List<StationPolicyModel> Policies { get; set; }
     }
 }

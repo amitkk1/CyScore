@@ -8,6 +8,7 @@ const StationPolicies = ({ policies }) => {
         { field: 'id', headerName: 'ID', flex: 1, headerAlign: 'center', align: 'center' },
         { field: 'name', headerName: 'Name', flex: 1, headerAlign: 'center', align: 'center' },
         { field: 'description', headerName: 'Description', flex: 1, headerAlign: 'center', align: 'center' },
+        { field: 'lastChanged', headerName: 'Last Changed', flex: 1, headerAlign: 'center', align: 'center'},
         { field: 'status', headerName: 'Status', flex: 1, headerAlign: 'center', align: 'center' }
     ]
 
