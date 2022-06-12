@@ -1,7 +1,7 @@
 USE [CyscoreDB]
 GO
 
-/****** Object:  Table [dbo].[Users]    Script Date: 15/05/2022 16:22:07 ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 12/06/2022 15:56:10 ******/
 SET ANSI_NULLS ON
 GO
 

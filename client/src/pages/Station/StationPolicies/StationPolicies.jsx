@@ -5,9 +5,8 @@ import React from 'react'
 const StationPolicies = ({ policies }) => {
 
     const columns = [
-        { field: 'id', headerName: 'ID', flex: 1, headerAlign: 'center', align: 'center' },
-        { field: 'name', headerName: 'Name', flex: 1, headerAlign: 'center', align: 'center' },
-        { field: 'description', headerName: 'Description', flex: 1, headerAlign: 'center', align: 'center' },
+        { field: 'name', headerName: 'Name', flex: 2, headerAlign: 'center', align: 'center' },
+        { field: 'description', headerName: 'Description', flex: 4, headerAlign: 'center', align: 'center' },
         { field: 'lastChanged', headerName: 'Last Changed', flex: 1, headerAlign: 'center', align: 'center'},
         { field: 'status', headerName: 'Status', flex: 1, headerAlign: 'center', align: 'center' }
     ]
@@ -22,7 +21,7 @@ const StationPolicies = ({ policies }) => {
                 rowsPerPageOptions={[10]}
                 disableSelectionOnClick
                 sx={{
-                    bgcolor: "#80deea"
+                    bgcolor: "#80deea",
                   }}
             />
         </Container>

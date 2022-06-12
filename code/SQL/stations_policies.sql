@@ -1,7 +1,7 @@
 USE [CyscoreDB]
 GO
 
-/****** Object:  Table [dbo].[StationsPolicies]    Script Date: 15/05/2022 16:22:43 ******/
+/****** Object:  Table [dbo].[StationsPolicies]    Script Date: 12/06/2022 15:56:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,7 @@ CREATE TABLE [dbo].[StationsPolicies](
 	[PolicyId] [int] NOT NULL,
 	[StationId] [int] NOT NULL,
 	[Status] [nvarchar](50) NOT NULL,
-	[LastUpdated] [date] NOT NULL,
+	[LastChanged] [datetime] NOT NULL,
  CONSTRAINT [PK_StationsPolicies] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
